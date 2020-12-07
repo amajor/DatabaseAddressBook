@@ -19,7 +19,7 @@ def formatPhone(phone):
   lineNumber = phone[lineNumberSlice]
 
   # Return formatted number string
-  return "({}) {}-{}".format(areaCode, prefix, lineNumber)
+  return "({}){}-{}".format(areaCode, prefix, lineNumber)
 
 ##########################################
 # Print a record using the row's results #
@@ -29,12 +29,14 @@ def printRecord(row):
   formattedPhone = formatPhone(row['active_phone_number'])
 
   # Print record for user.
-  print("\nNAME:     ", row['person_name'])
-  print("\nADDRESS:  ", row['street_address'])
-  print("           {}, {} {}".format(row['city'], row['state'], row['zip_code']))
-  print("\nPHONE:    ", formattedPhone)
-  print("\nBIRTHDAY: ", row['person_DOB'])
-  print("           ({} years old)".format(row['age']))
+  print("\n++++++++++++++++++++++++++++++++++++++++")
+  print("+\n+  NAME:     ", row['person_name'])
+  print("+\n+  ADDRESS:  ", row['street_address'])
+  print("+             {}, {} {}".format(row['city'], row['state'], row['zip_code']))
+  print("+\n+  PHONE:    ", formattedPhone)
+  print("+\n+  BIRTHDAY: ", row['person_DOB'])
+  print("+             ({} years old)".format(row['age']))
+  print("+\n++++++++++++++++++++++++++++++++++++++++\n\n")
 
 #######################################################
 # Connect to the database, then execute the statement #
@@ -59,12 +61,17 @@ def connectThenExecute(type, statement):
       connection.commit()
 
     # EXECUTE a search by name query
-    elif type == "byName":
+    elif type == "basicSelect":
       with connection.cursor() as cursor:
         cursor.execute(statement)
         records = cursor.fetchall()
-        for row in records:
-          printRecord(row)
+        if cursor.rowcount > 0:
+          for row in records:
+            printRecord(row)
+        else:
+          print("\n++++++++++++++++++++++++++++++++++++++++")
+          print("+\n+  No record found.")
+          print("+\n++++++++++++++++++++++++++++++++++++++++\n\n")
 
     # EXECUTE a generic statement
     else:
@@ -72,6 +79,9 @@ def connectThenExecute(type, statement):
         cursor.execute(statement)
         records = cursor.fetchall()
         print(records)
+
+  except:
+    print("something went wrong")
 
   # Close the connection
   finally:

@@ -2,10 +2,18 @@
 
 from makeConnection import connectThenExecute
 
-def searchLastName():
-  name = input("  Enter Last Name: ")
-  print("\nSearching by '{}'...".format(name))
-  print  # Empty line
+def searchPhonePrefix():
+  print("\n(AAA) PPP-LLLL\n")
+  print("  Area Code --> (AAA)")
+  print("  Prefix    --> PPP")
+  print("  Land Line --> LLLL")
+  prefix = input("\nEnter 3-Digit Prefix: ")
+
+  while not prefix.isnumeric():
+    print("\n*** Not a valid prefix. ***")
+    prefix = input("\n  Enter 3-Digit Prefix: ")
+
+  print("\nSearching by '(xxx){}-xxxx'...\n".format(prefix))
 
   # Build SQl query to search by exact match of name.
   sql = '''
@@ -24,8 +32,8 @@ def searchLastName():
     JOIN AddressBook.addresses
       ON people_address.address_id = addresses.address_id
     WHERE end_date IS NULL
-      AND LOWER(person_name) = LOWER('{}');
-  '''.format(name)
+      AND active_phone_number LIKE "___{}____";
+  '''.format(prefix)
 
   # Execute the query
   connectThenExecute('basicSelect', sql)

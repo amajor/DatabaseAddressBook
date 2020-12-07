@@ -1,16 +1,21 @@
 #!/usr/bin/env python3
 import os
 from searchByName import searchLastName
+from searchByPrefix import searchPhonePrefix
 
 # Menu Choices
 MENU = '''
-=======================
-1 - Search by Last Name
-2 - Search by Prefix
-3 - Search by Age
-4 - Create New Contact
-5 - Quit
-=======================
+================================
+|                              |
+|  1 - Search by Last Name     |
+|  2 - Search by Phone Prefix  |
+|  3 - Search by Age           |
+|                              |
+|  4 - Create New Contact      |
+|                              |
+|  5 - Quit                    |
+|                              |
+================================
 '''
 
 # Define the main program that will run.
@@ -19,8 +24,8 @@ def main():
   os.system('cls' if os.name == 'nt' else 'clear')
 
   # Get user input
-  print("Type the number for your choice, then press 'ENTER':")
-  menuChoice = input(MENU)
+  print(MENU)
+  menuChoice = input("Menu Choice: ")
 
   while True:
     print()  # Print a new line for spacing
@@ -28,7 +33,7 @@ def main():
     if menuChoice == "1":
       searchLastName()
     elif menuChoice == "2":
-      searchPrefix()
+      searchPhonePrefix()
     elif menuChoice == "3":
       searchAge()
     elif menuChoice == "4":
@@ -36,19 +41,14 @@ def main():
     elif menuChoice == "5":
       quit()
     else:
-      print("Not a valid choice. Please choose from the menu.")
+      print("*** Not a valid choice. Please choose from the menu. ***\n\n")
 
     # Present the menu again to the user.
-    print # Empty Line
-    menuChoice = input(MENU)
-
-def searchPrefix():
-  prefix = input("Enter Prefix: ")
-  print("Searching by '{}'".format(prefix))
-  print  # Empty line
+    print(MENU)
+    menuChoice = input("Menu Choice: ")
 
 def searchAge():
-  age = input("Enter Age: ")
+  age = input("  Enter Age: ")
   print("Searching by age '{}'".format(age))
   print # Empty line
 
