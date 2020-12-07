@@ -80,8 +80,8 @@ def connectThenExecute(type, statement):
         records = cursor.fetchall()
         print(records)
 
-  except:
-    print("something went wrong")
+  except (connection.Error, connection.Warning) as e:
+    print("\n  Something went wrong:\n  {}\n".format(e))
 
   # Close the connection
   finally:
