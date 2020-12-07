@@ -5,8 +5,7 @@ from makeConnection import connectThenExecute
 def searchAgeRange():
   minAge = input("\n  Enter Minimum Age: ")
   maxAge = input("  Enter Maximum Age: ")
-  print("\nSearching by age 'BETWEEN {} AND {}'...".format(minAge, maxAge))
-  print  # Empty line
+  print("\nSearching by age 'BETWEEN {} AND {}'...\n".format(minAge, maxAge))
 
   # Build SQl query to search by exact match of name.
   sql = '''
