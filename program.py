@@ -2,6 +2,7 @@
 import os
 from searchByName import searchLastName
 from searchByPrefix import searchPhonePrefix
+from searchByAge import searchAgeRange
 
 # Menu Choices
 MENU = '''
@@ -33,7 +34,7 @@ def main():
     elif menuChoice == "2":
       searchPhonePrefix()
     elif menuChoice == "3":
-      searchAge()
+      searchAgeRange()
     elif menuChoice == "4":
       createContact()
     elif menuChoice == "5":
@@ -44,11 +45,6 @@ def main():
     # Present the menu again to the user.
     print(MENU)
     menuChoice = input("Menu Choice: ")
-
-def searchAge():
-  age = input("  Enter Age: ")
-  print("Searching by age '{}'".format(age))
-  print # Empty line
 
 def createContact():
   print("Time to create a contact!")
