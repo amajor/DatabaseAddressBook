@@ -3,10 +3,10 @@
 from makeConnection import connectThenExecute
 
 def searchPhonePrefix():
-  print("\n(AAA) PPP-LLLL\n")
-  print("  Area Code --> (AAA)")
-  print("  Prefix    --> PPP")
-  print("  Land Line --> LLLL")
+  print("\n(AAA)PPP-LLLL\n")
+  print("  Area Code   --> (AAA)")
+  print("  Prefix      --> PPP")
+  print("  Line Number --> LLLL")
   prefix = input("\nEnter 3-Digit Prefix: ")
 
   while not prefix.isnumeric():
