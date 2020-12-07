@@ -2,10 +2,19 @@
 A python console application that uses a MySQL database to manage a simple
 address book.
 
+* [Using the Program](./README.md#using-the-program)
+  * [Search by Last Name](./README.md#search-by-last-name)
+  * [Search by Phone Prefix](./README.md#search-by-phone-prefix)
+* [Installation](./README.md#installation)
+  * [Requirements](./README.md#requirements)
+  * [Setup](./README.md#setup)
+
+# Using the Program
+
 Run the progrm by cloning or downloading this repository, then navigating to
 the directory where the file resides.
 
-Run the program.
+Then, execute the program:
 
 ```python
 ./program.py
