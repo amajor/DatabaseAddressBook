@@ -28,8 +28,6 @@ def main():
   menuChoice = input("Menu Choice: ")
 
   while True:
-    print()  # Print a new line for spacing
-
     if menuChoice == "1":
       searchLastName()
     elif menuChoice == "2":

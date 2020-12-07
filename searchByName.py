@@ -3,7 +3,7 @@
 from makeConnection import connectThenExecute
 
 def searchLastName():
-  name = input("  Enter Last Name: ")
+  name = input("\n  Enter Last Name: ")
   print("\nSearching by '{}'...".format(name))
   print  # Empty line
 
