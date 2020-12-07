@@ -47,7 +47,7 @@ printed to the console.
 
 Run the seed file to set up your database in MySQL.
 
-* `[MySQL/create.sql](./MySQL/create.sql)`
+* [`MySQL/create.sql`](./MySQL/create.sql)
 
 You can use the SELECT statements in `joinActive.sql` or `joinall.sql` from
 [the same folder](./MySQL) to confirm that you've loaded your data.
