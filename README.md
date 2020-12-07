@@ -5,6 +5,7 @@ address book.
 * [Using the Program](./README.md#using-the-program)
   * [Search by Last Name](./README.md#search-by-last-name)
   * [Search by Phone Prefix](./README.md#search-by-phone-prefix)
+  * [Search by Age Range](./README.md#search-by-age-range)
 * [Installation](./README.md#installation)
   * [Requirements](./README.md#requirements)
   * [Setup](./README.md#setup)
@@ -43,6 +44,10 @@ If multiple records match your search criteria, you will see all results
 printed to the console.
 
 ![Image of Search By Prefix](./docs/images/search2_ByPrefix.png)
+
+## Search by Age Range
+
+![Image of Search By Age Range](./docs/images/search3_ByAgeRange.png)
 
 # Installation
 
