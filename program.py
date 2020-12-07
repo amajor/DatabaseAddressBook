@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 import os
+from searchByName import searchLastName
 
 # Menu Choices
 MENU = '''
@@ -40,11 +41,6 @@ def main():
     # Present the menu again to the user.
     print # Empty Line
     menuChoice = input(MENU)
-
-def searchLastName():
-  lastName = input("Enter Last Name: ")
-  print("Searching by '{}'".format(lastName))
-  print  # Empty line
 
 def searchPrefix():
   prefix = input("Enter Prefix: ")
