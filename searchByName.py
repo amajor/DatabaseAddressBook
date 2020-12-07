@@ -1,8 +1,10 @@
+#!/usr/bin/env python3
+
 from makeConnection import connectThenExecute
 
 def searchLastName():
   name = input("Enter Last Name: ")
-  print("Searching by '{}'".format(name))
+  print("\nSearching by '{}' . . .".format(name))
   print  # Empty line
 
   # Build SQl query to search by exact match of name.
@@ -22,8 +24,8 @@ def searchLastName():
     JOIN AddressBook.addresses
       ON people_address.address_id = addresses.address_id
     WHERE end_date IS NULL
-      AND LOWER(person_name) = LOWER('Major');
-  '''
+      AND LOWER(person_name) = LOWER('{}');
+  '''.format(name)
 
   # Execute the query
   connectThenExecute('byName', sql)
