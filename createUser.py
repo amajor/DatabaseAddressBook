@@ -112,7 +112,20 @@ def createNewContact():
         active_phone_number = '{1}'
       WHERE LOWER(person_name) = LOWER('{0}');
     '''.format(name, phone)
-    connectThenUpdatePerson(sqlUpdatePhone)
+    sqlInsertAddress = '''
+      INSERT INTO `AddressBook`.`addresses` (
+        `street_address`,
+        `city`,
+        `state`,
+        `zip_code`
+      ) VALUES (
+        '{0}',
+        '{1}',
+        '{2}',
+        '{3}'
+      );
+    '''.format(street, city, state, zip_code)
+    connectThenUpdatePerson(sqlUpdatePhone, sqlInsertAddress)
     displayUserContact(name)
 
   else:
