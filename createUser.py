@@ -2,6 +2,7 @@
 
 import re
 from makeConnection import connectAndCount
+from makeConnection import connectThenUpdatePerson
 from makeConnection import connectThenInsertNew
 from makeConnection import connectThenExecute
 
@@ -49,6 +50,30 @@ def checkIfUserExists(name):
   else:
     return False
 
+def displayUserContact(name):
+  # Display newly added user
+  sqlNewUser = '''
+    SELECT
+      person_name,
+      street_address,
+      city,
+      state,
+      zip_code,
+      active_phone_number,
+      person_DOB,
+      TIMESTAMPDIFF(YEAR, person_DOB, CURDATE()) AS age
+    FROM AddressBook.people_address
+    JOIN Addressbook.people_master
+      ON people_address.person_id = people_master.person_id
+    JOIN AddressBook.addresses
+      ON people_address.address_id = addresses.address_id
+    WHERE end_date IS NULL
+      AND LOWER(person_name) = LOWER('{}');
+  '''.format(name)
+
+  # Execute the query
+  connectThenExecute('basicSelect', sqlNewUser)
+
 def createNewContact():
   print("\n  Input user data below.\n")
   name   = input("    Name:           ")
@@ -81,6 +106,15 @@ def createNewContact():
   userExists = checkIfUserExists(name)
   if userExists:
     print("\nuser exists!")
+    sqlUpdatePhone = '''
+      UPDATE AddressBook.people_master
+      SET
+        active_phone_number = '{1}'
+      WHERE LOWER(person_name) = LOWER('{0}');
+    '''.format(name, phone)
+    connectThenUpdatePerson(sqlUpdatePhone)
+    displayUserContact(name)
+
   else:
     sqlInsertUser = '''
       INSERT INTO `AddressBook`.`people_master` (
@@ -136,24 +170,4 @@ def createNewContact():
     print("\nSuccessfully added {}!\n".format(name))
 
     # Display newly added user
-    sqlNewUser = '''
-    SELECT
-      person_name,
-      street_address,
-      city,
-      state,
-      zip_code,
-      active_phone_number,
-      person_DOB,
-      TIMESTAMPDIFF(YEAR, person_DOB, CURDATE()) AS age
-    FROM AddressBook.people_address
-    JOIN Addressbook.people_master
-      ON people_address.person_id = people_master.person_id
-    JOIN AddressBook.addresses
-      ON people_address.address_id = addresses.address_id
-    WHERE end_date IS NULL
-      AND LOWER(person_name) = LOWER('{}');
-  '''.format(name)
-
-  # Execute the query
-  connectThenExecute('basicSelect', sqlNewUser)
+    displayUserContact(name)

@@ -137,3 +137,29 @@ def connectThenInsertNew(sqlInsertUser, sqlInsertAddress, sqlMatch):
   # Close the connection
   finally:
     connection.close()
+
+#######################################################
+# Connect to the database, then update the user       #
+#######################################################
+def connectThenUpdatePerson(sqlUpdatePhone):
+  connection = pymysql.connect(
+    host=HOST,
+    user=USER,
+    password=PASSWORD,
+    db=DB,
+    charset='utf8mb4',
+    cursorclass=pymysql.cursors.DictCursor
+  )
+
+  try:
+    # CREATE a new user
+    with connection.cursor() as cursor:
+      cursor.execute(sqlUpdatePhone)
+    connection.commit()
+
+  except (connection.Error, connection.Warning) as e:
+    print("\n  Something went wrong:\n  {}\n".format(e))
+
+  # Close the connection
+  finally:
+    connection.close()
