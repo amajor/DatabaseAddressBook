@@ -158,6 +158,9 @@ def createNewContact():
     '''.format(name, phone, street, city, state, zip_code)
 
     connectThenUpdatePerson(sqlUpdatePhone, sqlInsertAddress, sqlEndCurrentAddress, sqlStartNewAddress)
+    print("\nSuccessfully updated {}!\n".format(name))
+
+    # Display newly added user
     displayUserContact(name)
 
   else:

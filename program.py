@@ -19,7 +19,7 @@ MENU = '''
 |                                 |
 |  5 - Search by Age              |
 |                                 |
-|  6 - Create New Contact         |
+|  6 - Create/Update Contact      |
 |                                 |
 |  0 - Quit                       |
 |                                 |

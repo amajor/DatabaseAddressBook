@@ -6,6 +6,7 @@ address book.
   * [Search by Last Name](./README.md#search-by-last-name)
   * [Search by Phone Prefix](./README.md#search-by-phone-prefix)
   * [Search by Age Range](./README.md#search-by-age-range)
+  * [Add or Update Person](./README.md#add-or-update-person)
 * [Installation](./README.md#installation)
   * [Requirements](./README.md#requirements)
   * [Setup](./README.md#setup)
@@ -28,7 +29,7 @@ interacting with the address book.
 
 Type your menu choice and follow the steps to interact with the program.
 
-## Search by Last Name
+## Search by Name
 
 If a result is not found, the application will alert you.
 
@@ -38,16 +39,42 @@ Additionally, the search is not case-sensitive.
 
 ![Image of Search By Last Name](./docs/images/search1_ByLastName_2.png)
 
-## Search by Phone Prefix
+If you choose to search by partial name, you can enter any part of the name
+and see any matching results.
+
+![Image of Search By Partial Name](./docs/images/search1_ByLastName_3.png)
+
+## Search by Phone Number
 
 If multiple records match your search criteria, you will see all results
 printed to the console.
 
-![Image of Search By Prefix](./docs/images/search2_ByPrefix.png)
+![Image of Phone Number Format](./docs/images/search2_ByPhone_1.png)
+
+![Image of Search by Area Code](./docs/images/search2_ByPhone_2.png)
+
+![Image of Search by Prefix](./docs/images/search2_ByPhone_3.png)
 
 ## Search by Age Range
 
 ![Image of Search By Age Range](./docs/images/search3_ByAgeRange.png)
+
+## Add or Update Person
+
+When you choose to create or update a contact, the system will check to see if
+a person by that name already exists.
+
+If not, a new person will be created and then displayed.
+
+![Image of Search By Age Range](./docs/images/create_person.png)
+
+If the person does exist, the address store will be updated to end the range of
+living at the previous addres, will add a new address, and will then link the
+user to the new address. The phone number will also be updated.
+
+![Image of Search By Age Range](./docs/images/update_person.png)
+
+_Note: The birthday will be ignored on updates._
 
 # Installation
 
