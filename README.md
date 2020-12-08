@@ -76,6 +76,8 @@ user to the new address. The phone number will also be updated.
 
 _Note: The birthday will be ignored on updates._
 
+-----
+
 # Installation
 
 ## Requirements
@@ -90,5 +92,5 @@ Run the seed file to set up your database in MySQL.
 
 * [`MySQL/create.sql`](./MySQL/create.sql)
 
-You can use the SELECT statements in `joinActive.sql` or `joinall.sql` from
+You can use the SELECT statements in `joinActive.sql` or `joinAll.sql` from
 [the same folder](./MySQL) to confirm that you've loaded your data.
