@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 import os
 from searchByName import searchExactName
+from searchByName import searchPartialName
 from searchByPhone import searchPhoneAreaCode
 from searchByPhone import searchPhonePrefix
 from searchByAge import searchAgeRange
@@ -37,6 +38,8 @@ def main():
   while True:
     if menuChoice == "1":
       searchExactName()
+    elif menuChoice == "2":
+      searchPartialName()
     elif menuChoice == "3":
       searchPhoneAreaCode()
     elif menuChoice == "4":
