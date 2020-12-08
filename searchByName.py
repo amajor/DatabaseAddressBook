@@ -3,8 +3,8 @@
 import os
 from makeConnection import connectThenExecute
 
-def searchLastName():
-  name = input("\n  Enter Last Name: ")
+def searchExactName():
+  name = input("\n  Enter Exact Name: ")
 
   # Clear the terminal screen
   os.system('cls' if os.name == 'nt' else 'clear')

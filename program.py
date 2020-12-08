@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 import os
-from searchByName import searchLastName
+from searchByName import searchExactName
 from searchByPhone import searchPhoneAreaCode
 from searchByPhone import searchPhonePrefix
 from searchByAge import searchAgeRange
@@ -10,7 +10,7 @@ from createUser import createNewContact
 MENU = '''
 ===================================
 |                                 |
-|  1 - Search by Last Name        |
+|  1 - Search by Exact Name       |
 |  2 - Search by Partial Name     |
 |                                 |
 |  3 - Search by Phone Area Code  |
@@ -36,7 +36,7 @@ def main():
 
   while True:
     if menuChoice == "1":
-      searchLastName()
+      searchExactName()
     elif menuChoice == "3":
       searchPhoneAreaCode()
     elif menuChoice == "4":
