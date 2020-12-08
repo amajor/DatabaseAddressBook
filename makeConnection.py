@@ -2,6 +2,11 @@
 
 import pymysql
 
+HOST = 'localhost'
+USER = 'root'
+PASSWORD = 'password'
+DB = 'AddressBook'
+
 ###################################
 # Return a formatted phone number #
 ###################################
@@ -43,25 +48,17 @@ def printRecord(row):
 #######################################################
 def connectThenExecute(type, statement):
   connection = pymysql.connect(
-    host='localhost',
-    user='root',
-    password='password',
-    db='AddressBook',
+    host=HOST,
+    user=USER,
+    password=PASSWORD,
+    db=DB,
     charset='utf8mb4',
     cursorclass=pymysql.cursors.DictCursor
   )
 
   try:
-    # CREATE a new user
-    if type == "insert":
-      with connection.cursor() as cursor:
-        # Create a new record
-        cursor.execute(statement)
-      # Commit to save your changes.
-      connection.commit()
-
     # EXECUTE a search by name query
-    elif type == "basicSelect":
+    if type == "basicSelect":
       with connection.cursor() as cursor:
         cursor.execute(statement)
         records = cursor.fetchall()
@@ -79,6 +76,60 @@ def connectThenExecute(type, statement):
         cursor.execute(statement)
         records = cursor.fetchall()
         print(records)
+
+  except (connection.Error, connection.Warning) as e:
+    print("\n  Something went wrong:\n  {}\n".format(e))
+
+  # Close the connection
+  finally:
+    connection.close()
+
+def connectAndCount(statement):
+  connection = pymysql.connect(
+    host=HOST,
+    user=USER,
+    password=PASSWORD,
+    db=DB,
+    charset='utf8mb4',
+    cursorclass=pymysql.cursors.DictCursor
+  )
+
+  try:
+    with connection.cursor() as cursor:
+      cursor.execute(statement)
+      count = cursor.rowcount
+  except (connection.Error, connection.Warning) as e:
+    print("\n  Something went wrong:\n  {}\n".format(e))
+
+  # Close the connection
+  finally:
+    connection.close()
+    return count
+
+#######################################################
+# Connect to the database, then insert the user       #
+#######################################################
+def connectThenInsertNew(sqlInsertUser, sqlInsertAddress, sqlMatch):
+  connection = pymysql.connect(
+    host=HOST,
+    user=USER,
+    password=PASSWORD,
+    db=DB,
+    charset='utf8mb4',
+    cursorclass=pymysql.cursors.DictCursor
+  )
+
+  try:
+    # CREATE a new user
+    with connection.cursor() as cursor:
+      cursor.execute(sqlInsertUser)
+      cursor.execute(sqlInsertAddress)
+    connection.commit()
+
+    # Tie together the two new entries
+    with connection.cursor() as cursor:
+      cursor.execute(sqlMatch)
+    connection.commit()
 
   except (connection.Error, connection.Warning) as e:
     print("\n  Something went wrong:\n  {}\n".format(e))
