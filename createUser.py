@@ -105,7 +105,6 @@ def createNewContact():
 
   userExists = checkIfUserExists(name)
   if userExists:
-    print("\nuser exists!")
     sqlUpdatePhone = '''
       UPDATE AddressBook.people_master
       SET
@@ -135,8 +134,30 @@ def createNewContact():
       )
       AND end_date IS NULL;
     '''.format(name, phone)
+    sqlStartNewAddress = '''
+      INSERT INTO AddressBook.people_address (
+        person_id,
+        address_id,
+        start_date
+      ) VALUES (
+        (
+          -- Select the auto-generated id for the person just updated.
+          SELECT person_id FROM AddressBook.people_master
+            WHERE person_name = '{0}'
+          AND active_phone_number = '{1}'
+        ),(
+          -- Select the auto-generated id for the address just created.
+          SELECT address_id FROM AddressBook.addresses
+            WHERE street_address = '{2}'
+            AND city = '{3}'
+            AND state = '{4}'
+            AND zip_code = '{5}'
+        ),
+        CURDATE()
+      );
+    '''.format(name, phone, street, city, state, zip_code)
 
-    connectThenUpdatePerson(sqlUpdatePhone, sqlInsertAddress, sqlEndCurrentAddress)
+    connectThenUpdatePerson(sqlUpdatePhone, sqlInsertAddress, sqlEndCurrentAddress, sqlStartNewAddress)
     displayUserContact(name)
 
   else:
