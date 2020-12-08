@@ -29,14 +29,14 @@ def printRecord(row):
   formattedPhone = formatPhone(row['active_phone_number'])
 
   # Print record for user.
-  print("\n++++++++++++++++++++++++++++++++++++++++")
-  print("+\n+  NAME:     ", row['person_name'])
-  print("+\n+  ADDRESS:  ", row['street_address'])
-  print("+             {}, {} {}".format(row['city'], row['state'], row['zip_code']))
-  print("+\n+  PHONE:    ", formattedPhone)
-  print("+\n+  BIRTHDAY: ", row['person_DOB'])
-  print("+             ({} years old)".format(row['age']))
-  print("+\n++++++++++++++++++++++++++++++++++++++++\n\n")
+  print("+++++++++++++++++++++++++++++++++++++++++++++++")
+  print("++++\n++++    NAME:     ", row['person_name'])
+  print("++++\n++++    ADDRESS:  ", row['street_address'])
+  print("++++               {}, {} {}".format(row['city'], row['state'], row['zip_code']))
+  print("++++\n++++    PHONE:    ", formattedPhone)
+  print("++++\n++++    BIRTHDAY: ", row['person_DOB'])
+  print("++++               ({} years old)".format(row['age']))
+  print("++++\n+++++++++++++++++++++++++++++++++++++++++++++++\n")
 
 #######################################################
 # Connect to the database, then execute the statement #

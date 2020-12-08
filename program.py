@@ -48,7 +48,7 @@ def main():
     elif menuChoice == "0":
       quit()
     else:
-      print("*** Not a valid choice. Please choose from the menu. ***\n\n")
+      print("\n*** Not a valid choice. Please choose from the menu. ***\n\n")
 
     # Present the menu again to the user.
     print(MENU)

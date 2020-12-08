@@ -1,10 +1,14 @@
 #!/usr/bin/env python3
 
+import os
 from makeConnection import connectThenExecute
 
 def searchAgeRange():
   minAge = input("\n  Enter Minimum Age: ")
   maxAge = input("  Enter Maximum Age: ")
+
+  # Clear the terminal screen
+  os.system('cls' if os.name == 'nt' else 'clear')
   print("\nSearching by age 'BETWEEN {} AND {}'...\n".format(minAge, maxAge))
 
   # Build SQl query to search by exact match of name.

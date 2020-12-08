@@ -1,11 +1,14 @@
 #!/usr/bin/env python3
 
+import os
 from makeConnection import connectThenExecute
 
 def searchLastName():
   name = input("\n  Enter Last Name: ")
-  print("\nSearching by '{}'...".format(name))
-  print  # Empty line
+
+  # Clear the terminal screen
+  os.system('cls' if os.name == 'nt' else 'clear')
+  print("\nSearching by '{}'...\n".format(name))
 
   # Build SQl query to search by exact match of name.
   sql = '''
