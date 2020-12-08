@@ -141,7 +141,7 @@ def connectThenInsertNew(sqlInsertUser, sqlInsertAddress, sqlMatch):
 #######################################################
 # Connect to the database, then update the user       #
 #######################################################
-def connectThenUpdatePerson(sqlUpdatePhone, sqlInsertAddress):
+def connectThenUpdatePerson(sqlUpdatePhone, sqlInsertAddress, sqlEndCurrentAddress):
   connection = pymysql.connect(
     host=HOST,
     user=USER,
@@ -156,6 +156,12 @@ def connectThenUpdatePerson(sqlUpdatePhone, sqlInsertAddress):
     with connection.cursor() as cursor:
       cursor.execute(sqlUpdatePhone)
       cursor.execute(sqlInsertAddress)
+    connection.commit()
+
+    # END the current address and connect the new
+    with connection.cursor() as cursor:
+      cursor.execute(sqlEndCurrentAddress)
+      # connect new address here
     connection.commit()
 
   except (connection.Error, connection.Warning) as e:

@@ -125,7 +125,18 @@ def createNewContact():
         '{3}'
       );
     '''.format(street, city, state, zip_code)
-    connectThenUpdatePerson(sqlUpdatePhone, sqlInsertAddress)
+    sqlEndCurrentAddress = '''
+      UPDATE AddressBook.people_address
+        SET end_date = CURDATE()
+      WHERE person_id = (
+        SELECT person_id FROM AddressBook.people_master
+          WHERE person_name = '{0}'
+          AND active_phone_number = '{1}'
+      )
+      AND end_date IS NULL;
+    '''.format(name, phone)
+
+    connectThenUpdatePerson(sqlUpdatePhone, sqlInsertAddress, sqlEndCurrentAddress)
     displayUserContact(name)
 
   else:
