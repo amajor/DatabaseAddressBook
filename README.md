@@ -16,6 +16,9 @@ address book.
 Run the progrm by cloning or downloading this repository, then navigating to
 the directory where the file resides.
 
+Follow the [installation requirements](./README.md#installation) at the bottom
+of this document for any required software or drivers.
+
 Then, execute the program:
 
 ```python
