@@ -4,7 +4,7 @@ address book.
 
 * [Using the Program](./README.md#using-the-program)
   * [Search by Last Name](./README.md#search-by-last-name)
-  * [Search by Phone Prefix](./README.md#search-by-phone-prefix)
+  * [Search by Phone Number](./README.md#search-by-phone-number)
   * [Search by Age Range](./README.md#search-by-age-range)
   * [Add or Update Person](./README.md#add-or-update-person)
 * [Installation](./README.md#installation)
