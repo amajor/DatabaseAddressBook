@@ -1,6 +1,8 @@
 # DatabaseAddressBook
 A python console application that uses a MySQL database to manage a simple
-address book.
+address book using connectors.
+
+_To see the same application but set up using an ORM, please see https://github.com/amajor/DatabaseAddressBookORM_
 
 * [Using the Program](./README.md#using-the-program)
   * [Search by Last Name](./README.md#search-by-last-name)
